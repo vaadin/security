@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+Hint to Vaadin that if this page is ever sent back as response to a UIDL request, the user should be redirected.
+
+Vaadin-Refresh: context://login.html
+-->
+<head>
+<title>{title}</title>
+<style>
+@font-face {
+	font-family: "Open Sans";
+	src: url(VAADIN/themes/valo/fonts/open-sans/OpenSans-Light-webfont.woff)
+		format("woff");
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src:
+		url(VAADIN/themes/valo/fonts/open-sans/OpenSans-Regular-webfont.woff)
+		format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Open Sans";
+	src:
+		url(VAADIN/themes/valo/fonts/open-sans/OpenSans-Semibold-webfont.woff)
+		format("woff");
+	font-weight: 600;
+	font-style: normal;
+}
+
+body {
+	font: 300 16px/1.55 "Open Sans", sans-serif;
+	color: #464646;
+	background-color: #fafafa;
+	cursor: default;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	text-align: center;
+	padding: 20px 0;
+	background-color: #f0f0f0;
+}
+
+#header h1 {
+	margin: 10px 0 0;
+}
+
+#header p {
+	margin: 0;
+}
+
+#header-image {
+	margin: 0 auto;
+	background-color: gray;
+	width: 80px;
+	height: 80px;
+}
+
+form {
+	padding: 0 20px;
+}
+
+label {
+	font-size: 14px;
+	font-weight: 400;
+	padding-bottom: 0.3em;
+	padding-left: 1px;
+	display: inline-block;
+	white-space: nowrap;
+	line-height: 1.55;
+	color: #464646;
+	cursor: default;
+	-webkit-tap-highlight-color: transparent;
+}
+
+input[type='text'], input[type='password'] {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-writing-mode: horizontal-tb;
+	text-rendering: auto;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	box-sizing: border-box;
+	vertical-align: top;
+	text-align: left;
+	white-space: normal;
+	width: 100%;
+	display: block;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	margin: 0;
+	font: inherit;
+	font-weight: 400;
+	line-height: normal;
+	height: 37px;
+	border-radius: 4px;
+	padding: 4px 9px;
+	border: 1px solid #c5c5c5;
+	background: white;
+	color: #474747;
+	box-shadow: inset 0 1px 0 #f7f7f7, 0 1px 0 rgba(255, 255, 255, 0.1);
+	-webkit-transition: box-shadow 180ms, border 180ms;
+	-moz-transition: box-shadow 180ms, border 180ms;
+	transition: box-shadow 180ms, border 180ms;
+}
+
+#button-submit {
+	margin-top: 1.5em;
+	height: 37px;
+	border-radius: 4px;
+	border: 1px solid #1362b1;
+	border-top-color: #156ab3;
+	border-bottom-color: #1156a8;
+	background-color: #197de1;
+	background-image: -webkit-linear-gradient(top, #1b87e3 2%, #166ed5 98%);
+	background-image: linear-gradient(to bottom, #1b87e3 2%, #166ed5 98%);
+	box-shadow: inset 0 1px 0 #4d98e6, inset 0 -1px 0 #166bca, 0 2px 3px
+		rgba(0, 0, 0, 0.05);
+	width: 100%;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: top;
+	color: #ecf2f8;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
+	text-align: center;
+	white-space: nowrap;
+	position: relative;
+	font: inherit;
+	font-weight: 600;
+	line-height: 1.55;
+}
+
+#button-submit:focus:after {
+	border-color: #197de1;
+	box-shadow: 0 0 0 2px rgba(25, 125, 225, 0.5);
+	background-color: rgba(90, 163, 237, 0.1);
+	content: "";
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	left: -1px;
+	transition: box-shadow 180ms, border 180ms;
+	border-radius: inherit;
+}
+
+@media ( max-width : 599px) {
+}
+
+@media ( min-width : 600px) {
+	form {
+		width: 600px;
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
+}
+
+@media ( min-width : 900px) {
+}
+</style>
+<!-- TODO: Add a project icon when we have one, which can then be easily swapped out by customrs -->
+<link rel="shortcut icon" href="VAADIN/themes/orderstheme/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+	var preserveFragment = function() {
+		if (window.location.hash) {
+			document.getElementById("form").action += window.location.hash;
+		}
+	}
+</script>
+</head>
+<body onload="preserveFragment()">
+	<div id="header">
+		<div id="header-image"></div>
+		<h1>{Application Name}</h1>
+	</div>
+
+	<form id="form" method="post" action="login">
+		<label id="login-label" for="login">Email</label> <input type="text"
+			id="login" name="username" aria-labelledby="login-label" autofocus>
+		<label id="password-label" for="password">Password</label> <input
+			type="password" id="password" name="password"
+			aria-labelledby="password-label">
+		<button id="button-submit" type="submit">Sign in</button>
+	</form>
+</body>
+</html>
